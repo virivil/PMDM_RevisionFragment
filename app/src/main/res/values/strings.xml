@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ejercicio 1 SPLASH </string>
+
+    <string name="hello_world">¡Hola Paco!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_start">startActivity</string>
+
+</resources>

@@ -1,0 +1,23 @@
+<!-- View al que llego tras el splash -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+     tools:context=".MainActivity"
+     android:orientation="vertical">
+
+     <ImageView
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/splash_screen"
+         android:id="@+id/imageView2"
+         android:layout_weight="0.5" />
+
+     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+         android:id="@+id/listview"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:layout_weight="0.5" />
+
+ </LinearLayout>
