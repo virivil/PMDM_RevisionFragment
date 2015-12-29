@@ -3,6 +3,7 @@ package com.example.vince.pmdm_proyecto;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
 
@@ -12,7 +13,7 @@ import java.util.TimerTask;
 
 public class startActivity extends Activity {
 
-    private long SPLASH_DELAY = 6000; //1 segundos
+    private long SPLASH_DELAY = 3000; //1 segundos
 
 
 
@@ -27,12 +28,27 @@ public class startActivity extends Activity {
 
 
 
+
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Intent mainIntent = new Intent(getApplicationContext(),
+              /*
+              // Intento para pasar al mainactivity
+              Intent mainIntent = new Intent(getApplicationContext(),
                         MainActivity.class);
                 startActivity(mainIntent);
+                */
+
+
+                // Intento para pasar al activuty perfil
+                Intent mainIntent = new Intent(getApplicationContext(),
+                        Perfil.class);
+                startActivity(mainIntent);
+
+
+
+
                 //Destruimos esta activity para prevenir
                 //que el usuario retorne aqui presionando el boton Atras.
                 finish();

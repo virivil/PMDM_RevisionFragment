@@ -2,8 +2,11 @@ package com.example.vince.pmdm_proyecto;
 
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -16,7 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ListFragment.ListFragmentListener,PerfilFragment.OnFragmentBotonListener {
 
     private MenuItem item;
 
@@ -30,58 +33,80 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
+        // aqui recojo la info pasada con el intent  ,
 
-        //Hacemos un cast
-        final ListView listview = (ListView) findViewById(R.id.listview);
+        Bundle bundleperfil = getIntent().getExtras();
+
+        // la asigno a variables
+        String nombre = bundleperfil.getString("nombre");
+        String edad = bundleperfil.getString("edad");
+
+        // imprimo por consola
+        Log.i("Nombre:", nombre);
+        Log.i("Edad:", edad);
 
 
-        // a partir del array de Elemento (clase nueva) creamos una lista de tipo arraylist( lista de arreglos)
 
-        ArrayList<elemento> listaMenu = new ArrayList<elemento>();
-        elemento item;
-
-        // Introduzco los datos
-        item = new elemento(getResources().getDrawable(R.drawable.ic_action_name), " Opción 1 ", "Rojo");
-        listaMenu.add(item);
-        item = new elemento(getResources().getDrawable(R.drawable.ic_action_name), "  Opción 2 ", "Azul");
-        listaMenu.add(item);
-        item = new elemento(getResources().getDrawable(R.drawable.ic_action_name), "  Opción 3 ", "Morado");
-        listaMenu.add(item);
-        item = new elemento(getResources().getDrawable(R.drawable.ic_action_name), "  Opción 4 ", "Plata");
-        listaMenu.add(item);
-
-        //Utilizamos nuestro Adapter customizado --> Clase  Menuadapter . This = context
-        MenuAdapter adapter =  new MenuAdapter(this,listaMenu);
-
-        //Por último enchufamos el adaptador a la Vista que es el ListView
-
-        // "Conectamos" el adaptador al Listview
-        listview.setAdapter(adapter);
-
-        //Sobreescribimos el metodo por defecto del listener de la lista. Lo implementamos más a bajo
-        listview.setOnItemClickListener(new MetodoListener());
     }
 
 
-    //Implementamos el listener para nuestro listView
-    //INNER CLASS
-    private class MetodoListener implements AdapterView.OnItemClickListener{
-        public void onItemClick (AdapterView<?> parent, View view, int position, long id){
-            //String de la posicion clickada
+    public void onListSelected(int position,String item) {
+
+
+            Log.i("TRAZA","traza1")  ;
+
+       // Toast.makeText(this, "Posición elegida:" + item, Toast.LENGTH_SHORT).show();
+
+            // Bundle para el paso de info de un fragment a otra.
+
+            Bundle arguments = new Bundle();
+            arguments.putString(TextoFragment.ARG_PARAM1 , item);
+            arguments.putInt(String.valueOf(TextoFragment.ARG_PARAM2), position);
+
+
+        if (position == 0) {
+
+            // si la posición es cero , cargamos el Fragment Perfil.
+
+            Log.i("TRAZA","traza2")  ;
+
+
+            // Intent, pass the Intent's extras to the fragment as arguments
+            PerfilFragment secondFragment = new PerfilFragment() ;
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
 
 
 
-            String item ;
-            item = "Hola";
+        } else {
+
+            Log.i("TRAZA","traza3")  ;
 
 
+            // Create a new Fragment to be placed in the activity layout
 
-            Toast.makeText(MainActivity.this,item, Toast.LENGTH_LONG).show();
+            TextoFragment firstFragment = new TextoFragment() ;
 
-            //Paso de informacion a otro Intent , es decir , a otra actividad
-            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-            intent.putExtra("so", item);
-            startActivity(intent);
+
+            // In case this activity was started with special instructions from an
+            // Intent, pass the Intent's extras to the fragment as arguments
+            firstFragment.setArguments(arguments);
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, firstFragment).commit();
+
+
         }
+
+
+
+    }
+
+
+    @Override
+    public void onFragmentInteraction() {
+        Log.i("INFO_DAM","por 4 en MainActivity");
+
     }
 }

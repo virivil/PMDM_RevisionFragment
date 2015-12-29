@@ -71,6 +71,9 @@ public class MenuAdapter extends BaseAdapter {
 
         color = dir.getColor();
 
+        convertView.setBackgroundColor(Color.parseColor(color));
+
+/*
         if (color == "Azul") {
             convertView.setBackgroundColor(Color.parseColor("#99CCCC"));
         } else if ( color == "Plata" ) {
@@ -78,7 +81,7 @@ public class MenuAdapter extends BaseAdapter {
             convertView.setBackgroundColor(Color.parseColor("#CCCCCC"));
 
         } else { }
-
+*/
 
 
         return convertView;
