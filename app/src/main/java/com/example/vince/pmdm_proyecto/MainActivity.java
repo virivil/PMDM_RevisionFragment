@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
         setContentView(R.layout.activity_main);
 
 
-        // aqui recojo la info pasada con el intent  ,
+        // aqui  recojo la info pasada con el intent  ,
 
         Bundle bundleperfil = getIntent().getExtras();
 

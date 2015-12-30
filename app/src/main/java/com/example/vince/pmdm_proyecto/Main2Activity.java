@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 
 /**
- * Created by vince on 3/11/15.  -----> esta clase sobra... es de una actividad anterior.
+ * Created by vince  on 3/11/15.  -----> esta clase sobra... es de una actividad anterior.
  */
 public class Main2Activity extends Activity {
 

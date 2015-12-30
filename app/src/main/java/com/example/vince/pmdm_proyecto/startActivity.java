@@ -50,7 +50,7 @@ public class startActivity extends Activity {
 
 
                 //Destruimos esta activity para prevenir
-                //que el usuario retorne aqui presionando el boton Atras.
+                //que el usuario  retorne aqui presionando el boton Atras.
                 finish();
             }
 
