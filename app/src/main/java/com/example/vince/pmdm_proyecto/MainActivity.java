@@ -32,20 +32,23 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
 
         setContentView(R.layout.activity_main);
 
+        //Checkamos si estamos en un dispositivo grande o no
 
-        // aqui  recojo la info pasada con el intent  ,
+        if (findViewById(R.id.fragment_container) != null) {
+            // si es tablet
 
-        Bundle bundleperfil = getIntent().getExtras();
+            // aqui  recojo la info pasada con el intent  desde la act Perfil,
 
-        // la asigno a variables
-        String nombre = bundleperfil.getString("nombre");
-        String edad = bundleperfil.getString("edad");
+            Bundle bundleperfil = getIntent().getExtras();
 
-        // imprimo por consola
-        Log.i("Nombre:", nombre);
-        Log.i("Edad:", edad);
+            // la asigno a variables
+            String nombre = bundleperfil.getString("nombre");
+            String edad = bundleperfil.getString("edad");
 
+            // Comprobación del paso correcto de los parametros desde actividad Perfil a act Main:
 
+            Toast.makeText(this, "Compruebo que paso correctamente la info  entr Activityes" + nombre + edad, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -53,35 +56,33 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
     public void onListSelected(int position,String item) {
 
 
-            Log.i("TRAZA","traza1")  ;
 
-       // Toast.makeText(this, "Posición elegida:" + item, Toast.LENGTH_SHORT).show();
 
-            // Bundle para el paso de info de un fragment a otra.
+            // Bundle para el paso de info de esta actividad a un fragment
 
-            Bundle arguments = new Bundle();
+           Bundle arguments = new Bundle();
             arguments.putString(TextoFragment.ARG_PARAM1 , item);
             arguments.putInt(String.valueOf(TextoFragment.ARG_PARAM2), position);
 
+        if (findViewById(R.id.fragment_container) != null) {
+            // si es tableta
 
-        if (position == 0) {
-
-            // si la posición es cero , cargamos el Fragment Perfil.
-
-            Log.i("TRAZA","traza2")  ;
+            if (position == 0) {
 
 
-            // Intent, pass the Intent's extras to the fragment as arguments
-            PerfilFragment secondFragment = new PerfilFragment() ;
 
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
+                // si la posición es cero , cargamos el Fragment Perfil.
 
+
+                // Intent, pass the Intent's extras to the fragment as arguments
+                PerfilFragment secondFragment = new PerfilFragment();
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
 
 
         } else {
 
-            Log.i("TRAZA","traza3")  ;
 
 
             // Create a new Fragment to be placed in the activity layout
@@ -96,8 +97,25 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
             // Add the fragment to the 'fragment_container' FrameLayout
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, firstFragment).commit();
 
+        }
+        } else {
+
+        // si es movil
+
+            //  meto al intent la info que quiero pasar entre actv. (de Act Perfil a Act Main)
+            if (position == 0) {
+
+            Intent mainIntent = new Intent(getApplicationContext(), Main2Activity.class);
+
+            mainIntent.putExtra("posicion", position); //posicion clickada , intent para pasar la info al main activity 2
+
+
+            startActivity(mainIntent); }
+
+
 
         }
+
 
 
 
@@ -105,8 +123,10 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
 
 
     @Override
-    public void onFragmentInteraction() {
-        Log.i("INFO_DAM","por 4 en MainActivity");
+    public void onFragmentInteraction(String A, String B) {
 
+        // Comprobación del paso correcto de los parametros desde actividad Perfil a act Main:
+
+        Toast.makeText(this,"Compruebo que paso correctamente la info del Fragment a la Act Main " + A + B , Toast.LENGTH_SHORT).show();
     }
 }

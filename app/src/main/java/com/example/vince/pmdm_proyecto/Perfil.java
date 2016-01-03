@@ -17,14 +17,6 @@ import com.example.vince.pmdm_proyecto.R;
 
 public class Perfil extends Activity implements PerfilFragment.OnFragmentBotonListener{
 
-/**
-   EditText edit_text1;
-
-    EditText edit_text2 ;
-
-    //  INSTANCIAMOS el boton para asignarle  un listener.
-    Button b;
-**/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,90 +28,22 @@ public class Perfil extends Activity implements PerfilFragment.OnFragmentBotonLi
         setContentView(R.layout.activity_perfil);
 
 
-
-
-            // INSTANCIAMOS el boton para asignarle  un listener.
-            //Button b = (Button) findViewById(R.id.botonjugar);
-
-
-
-
-
-
-
-        /**        b.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Log.i("INFO_DAM","por 1 en Perfil");
-
-                        // recupero la info rellenada
-
-                        // antes he declarado los campos , ahora los instancia
-                        edit_text1 = (EditText) findViewById(R.id.editText);
-
-                        edit_text2 = (EditText) findViewById(R.id.editText2);
-
-                        // recupero el valor en string de los campos
-
-                        String Name = edit_text1.getText().toString();
-                        String Years = edit_text2.getText().toString();
-
-
-
-                        //  Intent para pasar al mainactivity
-                        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-
-
-                        //  meto al intent la info que quiero pasar entre actv.
-                        mainIntent.putExtra("nombre", Name); //nombre
-                        mainIntent.putExtra("edad", Years);  //edad
-
-                        // inicio la otra actv.
-                        startActivity(mainIntent);
-
-                    }
-                }); **/
-
-
     }
-
-/**
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_perfil, menu);
-        return true;
-    }
-
-**/
-
-/**    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    } **/
-
-
 
 
 
    @Override
-    public void onFragmentInteraction() {
+    public void onFragmentInteraction(String A, String B) {
 
 
-        Log.i("INFO_DAM", "Pruebaaaaaa");
+        Log.i("INFO_DAM", "Desde la actividad Perfil" + A + B);
 
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+
+      //  meto al intent la info que quiero pasar entre actv. (de Act Perfil a Act Main)
+       mainIntent.putExtra("nombre", A); //nombre
+       mainIntent.putExtra("edad", B);  //edad
+
        startActivity(mainIntent);
 
 

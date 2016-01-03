@@ -6,41 +6,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import static com.example.vince.pmdm_proyecto.PerfilFragment.*;
+
 
 /**
- * Created by vince  on 3/11/15.  -----> esta clase sobra... es de una actividad anterior.
  */
-public class Main2Activity extends Activity {
+public class Main2Activity extends Activity implements PerfilFragment.OnFragmentBotonListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*        setContentView(R.layout.activity_main2);
 
-        // Check that the activity is using the layout version with
-        // the fragment_container FrameLayout
-        if (findViewById(R.id.fragment_container) != null) {
+        setContentView(R.layout.activity_main2);
 
-            // However, if we're being restored from a previous state,
-            // then we don't need to do anything and should return or else
-            // we could end up with overlapping fragments.
-            if (savedInstanceState != null) {
-                return;
-            }
 
-            // Create a new Fragment to be placed in the activity layout
-            TextoFragment firstFragment = new TextoFragment();
+        // aqui  recojo la info pasada con el intent  desde la act MainActivity,
 
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
-            firstFragment.setArguments(getIntent().getExtras());
+        Bundle bundlemain = getIntent().getExtras();
 
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, firstFragment).commit();
-        }
-*/
+        // la asigno a variables
+        Integer posicion = bundlemain.getInt("position", 0);
 
+        // Comprobación del paso correcto de los parametros desde actividad Perfil a act Main:
+
+        Toast.makeText(this, "Compruebo que paso correctamente la info  entr Activityes" + posicion , Toast.LENGTH_SHORT).show();
+
+
+
+    }
+
+    @Override
+    public void onFragmentInteraction(String a, String b) {
 
     }
 }

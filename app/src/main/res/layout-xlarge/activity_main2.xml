@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Este xml sobra.... es de una actividad antigua -->
+<!-- Este layout pertence a xlarge y no se va a utilizar  -->
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

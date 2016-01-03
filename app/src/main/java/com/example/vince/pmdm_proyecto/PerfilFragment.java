@@ -32,6 +32,12 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
 
     Button b1;
 
+    // campos de texto :
+
+    EditText edit_text1;
+
+    EditText edit_text2 ;
+
     private OnFragmentBotonListener mListener;
 
 
@@ -69,6 +75,14 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
         View v=inflater.inflate(R.layout.fragment_perfil, container, false);
         b1=(Button)v.findViewById(botonjugar);
 
+        b1.setOnClickListener(this);  // añadido despues del email de paco.
+
+
+        // recupero la info rellenada en los campos, antes he declarado los campos , ahora los instancia
+        edit_text1 = (EditText) v.findViewById(R.id.editText);
+
+        edit_text2 = (EditText) v.findViewById(R.id.editText2);
+
 
         return v;
     }
@@ -97,7 +111,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
      */
     public interface OnFragmentBotonListener {
 
-        public void onFragmentInteraction();
+        public void onFragmentInteraction(String a, String b);
 
 
     }
@@ -113,7 +127,15 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
         Log.i("INFO_DAM", "por 2 en PerfilFragment");
 
 
-        mListener.onFragmentInteraction();
+
+        // recupero el valor en string de los campos y asigno los valores a dos constantes.
+
+        String Name = edit_text1.getText().toString();
+        String Years = edit_text2.getText().toString();
+
+        // Paso los dos valores
+
+        mListener.onFragmentInteraction(Name, Years);
 
 
 

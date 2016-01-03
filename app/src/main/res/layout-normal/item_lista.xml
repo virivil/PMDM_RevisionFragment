@@ -1,0 +1,25 @@
+<!-- View item de lista  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:textAlignment="center"
+    android:gravity="left">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_account_circle_white_48dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="17px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView"
+        android:layout_gravity="center_vertical" />
+</LinearLayout>

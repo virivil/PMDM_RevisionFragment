@@ -13,7 +13,7 @@ import java.util.TimerTask;
 
 public class startActivity extends Activity {
 
-    private long SPLASH_DELAY = 3000; //1 segundos
+    private long SPLASH_DELAY = 1000; //1 segundos
 
 
 
@@ -29,36 +29,27 @@ public class startActivity extends Activity {
 
 
 
-
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-              /*
-              // Intento para pasar al mainactivity
-              Intent mainIntent = new Intent(getApplicationContext(),
-                        MainActivity.class);
-                startActivity(mainIntent);
-                */
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
 
 
-                // Intento para pasar al activuty perfil
-                Intent mainIntent = new Intent(getApplicationContext(),
-                        Perfil.class);
-                startActivity(mainIntent);
+                    // Intent para pasar al activuty perfil
+                    Intent mainIntent = new Intent(getApplicationContext(),
+                            Perfil.class);
+                    startActivity(mainIntent);
 
 
+                    //Destruimos esta activity para prevenir
+                    //que el usuario  retorne aqui presionando el boton Atras.
+                    finish();
+                }
 
+            };
 
-                //Destruimos esta activity para prevenir
-                //que el usuario  retorne aqui presionando el boton Atras.
-                finish();
-            }
+            Timer timer = new Timer();
+            timer.schedule(task, SPLASH_DELAY);
 
-
-        };
-
-        Timer timer = new Timer();
-        timer.schedule(task, SPLASH_DELAY);
 
 
     }
