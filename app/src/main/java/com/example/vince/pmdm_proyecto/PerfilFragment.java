@@ -24,9 +24,6 @@ import static com.example.vince.pmdm_proyecto.R.id.editText2;
 import static com.example.vince.pmdm_proyecto.R.id.textView2;
 import static com.example.vince.pmdm_proyecto.R.id.textView3;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 
 public class PerfilFragment extends Fragment implements View.OnClickListener {
 
@@ -35,7 +32,6 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
     // campos de texto :
 
     EditText edit_text1;
-
     EditText edit_text2 ;
 
     private OnFragmentBotonListener mListener;
@@ -72,15 +68,14 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View v=inflater.inflate(R.layout.fragment_perfil, container, false);
         b1=(Button)v.findViewById(botonjugar);
-
-        b1.setOnClickListener(this);  // añadido despues del email de paco.
+        b1.setOnClickListener(this);
 
 
         // recupero la info rellenada en los campos, antes he declarado los campos , ahora los instancia
         edit_text1 = (EditText) v.findViewById(R.id.editText);
-
         edit_text2 = (EditText) v.findViewById(R.id.editText2);
 
 
@@ -105,39 +100,25 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
     }
 
 
-/**
-    /**
-     * ESTE ES EL INTERFAZ QUE EL ACTIVITY SUPOERIOR DEBE IMPLEMENTAR
-     */
-    public interface OnFragmentBotonListener {
+
+    public interface OnFragmentBotonListener {  //ESTE ES EL INTERFAZ QUE EL ACTIVITY SUPOERIOR DEBE IMPLEMENTAR
 
         public void onFragmentInteraction(String a, String b);
 
 
     }
-    /**
-     * ESTE ES EL LISTENER DEL BOTON
-     *
-     */
+
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {  // ESTE ES EL LISTENER DEL BOTON
 
-        //Llamamos al callback
-
-        Log.i("INFO_DAM", "por 2 en PerfilFragment");
-
-
+        Log.i("INFO_DAM", "por 2 en PerfilFragment");         //Llamamos al callback
 
         // recupero el valor en string de los campos y asigno los valores a dos constantes.
-
         String Name = edit_text1.getText().toString();
         String Years = edit_text2.getText().toString();
 
         // Paso los dos valores
-
         mListener.onFragmentInteraction(Name, Years);
-
-
 
     }
 
