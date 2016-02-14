@@ -27,7 +27,7 @@ public class Perfil extends Activity implements PerfilFragment.OnFragmentBotonLi
     public void onFragmentInteraction(String A, String B) {
 
 
-        Log.i("INFO_DAM", "Desde la actividad Perfil" + A + B);
+      //  Log.i("INFO_DAM", "Desde la actividad Perfil" + A + B);
 
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
 

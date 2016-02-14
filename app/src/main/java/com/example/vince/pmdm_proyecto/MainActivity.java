@@ -6,20 +6,14 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+
 import android.widget.Toast;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
-public class MainActivity extends Activity implements ListFragment.ListFragmentListener,PerfilFragment.OnFragmentBotonListener {
+public class MainActivity extends Activity implements ListFragment.ListFragmentListener,PerfilFragment.OnFragmentBotonListener,Perfil_2Fragment.OnFragmentBotonListener {
 
     private MenuItem item;
 
@@ -70,12 +64,18 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
                         if (position == 0) {                              // si la posición es cero , cargamos el Fragment Perfil.
 
 
-                            // Intent, pass the Intent's extras to the fragment as arguments
+        /*                    // Intent, pass the Intent's extras to the fragment as arguments
                             PerfilFragment secondFragment = new PerfilFragment();
 
                             // Add the fragment to the 'fragment_container' FrameLayout
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
+    */
 
+                            // Intent, pass the Intent's extras to the fragment as arguments
+                            Perfil_2Fragment secondFragment = new Perfil_2Fragment();
+
+                            // Add the fragment to the 'fragment_container' FrameLayout
+                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, secondFragment).commit();
 
 
 
@@ -111,10 +111,15 @@ public class MainActivity extends Activity implements ListFragment.ListFragmentL
 
                         if (position == 0) {                           //  meto al intent la info que quiero pasar entre esta actv y la que quiero lanzar.
 
-
+/*
                             Intent mainIntent = new Intent(getApplicationContext(), Main2Activity.class);
                             mainIntent.putExtra("posicion", position); //posicion clickada , intent para pasar la info al main activity 2
                             startActivity(mainIntent);
+*/
+                            Intent mainIntent = new Intent(getApplicationContext(), Perfil_2.class);
+                            mainIntent.putExtra("posicion", position); //posicion clickada , intent para pasar la info al main activity 2
+                            startActivity(mainIntent);
+
 
                         } else if (position == 1) {
 

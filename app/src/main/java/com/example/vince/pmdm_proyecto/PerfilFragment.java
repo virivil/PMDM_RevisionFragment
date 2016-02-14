@@ -103,7 +103,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
 
     public interface OnFragmentBotonListener {  //ESTE ES EL INTERFAZ QUE EL ACTIVITY SUPOERIOR DEBE IMPLEMENTAR
 
-        public void onFragmentInteraction(String a, String b);
+         void onFragmentInteraction(String a, String b);
 
 
     }
@@ -111,7 +111,7 @@ public class PerfilFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {  // ESTE ES EL LISTENER DEL BOTON
 
-        Log.i("INFO_DAM", "por 2 en PerfilFragment");         //Llamamos al callback
+       // Log.i("INFO_DAM", "por 2 en PerfilFragment");         //Llamamos al callback
 
         // recupero el valor en string de los campos y asigno los valores a dos constantes.
         String Name = edit_text1.getText().toString();

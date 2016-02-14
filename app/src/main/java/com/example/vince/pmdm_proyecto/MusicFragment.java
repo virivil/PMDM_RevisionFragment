@@ -97,10 +97,10 @@ public class MusicFragment extends Fragment {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId,
                                        int status) {
-                Log.d("AUDIO", "Cargada la cancion");
+               // Log.d("AUDIO", "Cargada la cancion");
                 if (0 == status) {
                     playButton.setEnabled(true);
-                    Log.d("AUDIO", "Cargada correctamente");
+                 //   Log.d("AUDIO", "Cargada correctamente");
                 }
             }
         });
@@ -149,7 +149,7 @@ public class MusicFragment extends Fragment {
     // Get ready to play sound effects
     @Override
     public void onResume() {
-        Log.d("AUDIO", "VOLVIENDO A TOCAR");
+       // Log.d("AUDIO", "VOLVIENDO A TOCAR");
         super.onResume();
         mAudioManager.setSpeakerphoneOn(true);
         mAudioManager.loadSoundEffects();
@@ -158,7 +158,7 @@ public class MusicFragment extends Fragment {
     // Release resources & clean up
     @Override
     public void onPause() {
-        Log.d("AUDIO", "EN PAUSA");
+       // Log.d("AUDIO", "EN PAUSA");
         if (null != mSoundPool) {
             mSoundPool.unload(mSoundId);
             mSoundPool.release();
